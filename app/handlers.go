@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gorilla/mux"
+	"github.com/anil1226/go-banking/service"
 )
 
 func getTime(w http.ResponseWriter, r *http.Request) {
@@ -58,19 +58,23 @@ func getAllCustomers(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func getCustomer(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	//custs := getAllCustomers(w,r)
-	fmt.Fprint(w, vars["customer_id"])
-}
+// func getCustomer(w http.ResponseWriter, r *http.Request) {
+// 	vars := mux.Vars(r)
+// 	//custs := getAllCustomers(w,r)
+// 	fmt.Fprint(w, vars["customer_id"])
+// }
 
-func createCustomer(w http.ResponseWriter, r *http.Request) {
+// func createCustomer(w http.ResponseWriter, r *http.Request) {
 
-	fmt.Fprint(w, "Post request recieved")
-}
+// 	fmt.Fprint(w, "Post request recieved")
+// }
 
 type Customer struct {
 	Name    string `json:"full_name" xml:"name"`
 	City    string `json:"city" xml:"city"`
 	Zipcode string `json:"zip_code" xml:"zip"`
+}
+
+type CustomerHandlers struct {
+	service service.CustomerService
 }
